@@ -1,0 +1,10 @@
+package com.project.miniproject.repository;
+
+import com.project.miniproject.model.Employee;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
+
+}
