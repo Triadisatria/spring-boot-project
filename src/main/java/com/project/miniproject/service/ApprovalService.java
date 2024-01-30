@@ -20,7 +20,7 @@ public class ApprovalService {
         EmployeeRegistrationResponse registrationResponse = new EmployeeRegistrationResponse();
         SecureRandom random = new SecureRandom();
 
-        int ranum = random.nextInt(10, 99);
+        int ranum = random.nextInt(100, 999);
         String nameInput = registrationRequest.getEmployeeName();
         String deptInput = registrationRequest.getDept();
         String roleInput = registrationRequest.getRoles();
