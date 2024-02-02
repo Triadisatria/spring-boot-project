@@ -1,7 +1,13 @@
 package com.project.miniproject.exception;
 
+import lombok.Getter;
+import org.springframework.http.HttpStatus;
+
+@Getter
 public class RequestException extends RuntimeException{
-    public RequestException(String message){
+    private final HttpStatus httpStatus;
+    public RequestException(String message, HttpStatus httpStatus){
         super(message);
+        this.httpStatus = httpStatus;
     }
 }

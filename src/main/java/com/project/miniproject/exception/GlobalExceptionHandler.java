@@ -1,6 +1,5 @@
 package com.project.miniproject.exception;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -9,8 +8,13 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class GlobalExceptionHandler {
     @ExceptionHandler(RequestException.class)
     public ResponseEntity<Object> handleRequestException(RequestException exception){
+        ErrorResponse errorResponse = new ErrorResponse();
+
+        errorResponse.setResponseCode(String.valueOf(exception.getHttpStatus()));
+        errorResponse.setResponseMessage(exception.getMessage());
+
         return ResponseEntity
-                .status(HttpStatus.BAD_REQUEST)
-                .body(exception.getMessage());
+                .status(exception.getHttpStatus())
+                .body(errorResponse);
     }
 }
